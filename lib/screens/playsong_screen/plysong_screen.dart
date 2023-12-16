@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
+import 'package:marquee_text/marquee_text.dart';
 import 'package:music_player/db/db%20functions/add_song_list.dart';
 import 'package:music_player/db/song_list_model.dart';
 import 'package:music_player/playlist_db/playlist_controller.dart';
@@ -126,15 +127,16 @@ class _PlayingSongState extends State<PlayingSong> {
             height: 70,
             padding: const EdgeInsets.all(25),
             child: Align(
-              child: Text(
-                widget.songs[widget.songIndex].name,
-                style: TextStyle(
-                  color: color.textColor,
-                  overflow: TextOverflow.ellipsis,
-                  fontSize: 20,
-                ),
-              ),
-            ),
+                child: MarqueeText(
+                    speed: 23,
+                    text: TextSpan(
+                      text: widget.songs[widget.songIndex].name,
+                      style: TextStyle(
+                        color: color.textColor,
+                        // overflow: TextOverflow.ellipsis,
+                        fontSize: 20,
+                      ),
+                    ))),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
